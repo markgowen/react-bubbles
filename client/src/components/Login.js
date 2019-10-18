@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { axiosWithAuth } from '../utils/AxiosWithAuth'
+import React, { useState } from 'react';
+import { axiosWithAuth } from '../utils/AxiosWithAuth';
 
 // Material UI
 import Avatar from '@material-ui/core/Avatar';
@@ -31,31 +31,31 @@ function Copyright() {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100vh',
+    height: '100vh'
   },
   image: {
     backgroundImage: 'url(https://source.unsplash.com/random)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    backgroundPosition: 'center'
   },
   paper: {
     margin: theme.spacing(8, 4),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.main
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(1)
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
+    margin: theme.spacing(3, 0, 2)
+  }
 }));
 
 const Login = props => {
@@ -65,11 +65,11 @@ const Login = props => {
   const [user, setUser] = useState({
     username: '',
     password: ''
-  })
+  });
 
   const handleChanges = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
-  }
+  };
 
   const logIn = e => {
     e.preventDefault();
@@ -81,7 +81,7 @@ const Login = props => {
         props.history.push('/dashboard');
       })
       .catch(err => console.log(err.res));
-  }
+  };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -101,10 +101,11 @@ const Login = props => {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
+              onChange={handleChanges}
               autoFocus
             />
             <TextField
@@ -117,6 +118,7 @@ const Login = props => {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handleChanges}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -128,6 +130,8 @@ const Login = props => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onChange={handleChanges}
+              onClick={logIn}
             >
               Sign In
             </Button>
