@@ -19,7 +19,7 @@ const BubblePage = () => {
       .catch(err => {
         console.log('Error in GET post api', err.response)
       })
-  })
+  }, [])
 
   return (
     <>
